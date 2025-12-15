@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+  <title>Dungeons and Dragons Classes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap" rel="stylesheet">
+
+  <style>
+    /*
+    background: url(tavern.png);       - my chosen background
+    background-size: cover;            - covers the site on all forms on display iphone, computer etc.
+
+    font-family: "Oxanium", sans-serif;- A very nice font i found that was old looking and fitting
+    font-weight: bold;                 - I dont know why this is here but it said on google to add this
+
+    display: flex;                     - makes the body flexbox
+    flex-direction: column;            - Makes all the box go up to down in columns
+    align-items: center;               - makes everything centered vertically
+    justify-items: center;             - makes everything centered horisontally 
+    */
+
+    body {
+      background: url(tavern.png);
+      background-size: cover;
+
+      font-family: "Oxanium", sans-serif;
+      font-weight: bold;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    
+
+    .banner img{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 150px;
+    height: auto;
+    margin: 30px;
+    cursor: pointer;
+    filter: drop-shadow(0 1px 0px rgb(0, 0, 0));
+    transition: 0.3s;
+    }
+
+    .banner img:hover{
+        transform: scale(1.1);
+    } 
+
+    /*
+    position: relative; - makes the position relative this is important because the text in the subdiv needs to float around in this div
+    margin: 30px;       - just makes the margin to be 30 px same as the rest
+    */
+
+    .d20{
+        position: relative;
+        margin: 30px;
+    }
+
+    /*
+    width: 500px;     - makes the width 500px same on everything
+    height: auto;     - just the height automatic because all the img are the same size so i only need to make one of the the right size
+    transition: 0.3s; - it takes 0.3s to transorm in this case size
+    filter: drop-shadow(0 0 10px rgb(62, 62, 62)); - Creates a light around the object
+    */
+
+    .d20 img{
+        width: 400px;
+        height: auto;
+        transition: 0.3s;
+        filter: drop-shadow(0 0 10px rgb(62, 62, 62));
+    }
+
+    /*
+    transform: scale(1.1); - this is what changes the size when hovering
+    cursor: pointer;       - this is an image so i changed the xursor to a clicker aka pointer
+    */
+
+    .d20:hover:hover img {
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+
+    /*
+    position: absolute;               - This is super important otherwise the text wont be in the div -daddydiv:relative -babydiv:absolute (this took a lot of youtube to understand)
+    top: 40%;                         - just positoning the text in the middle
+    left: 50%;                        - just positoning the text in the middle
+    transform: translate(-50%, -50%); - this makes it in the middle of the daddy div kinda, dont really understand it but it works!
+    font-size: 60px;                  - makes the font 60px
+
+    pointer-events: none;             - makes it so i can gover over the text but it only ffext the img nehind it
+    transition: transform 0.3s;       - it takes 0.3s to transorm in this case nothing? i think
+    opacity: 0;                       - makes it disappear when not hovering over the image
+    */
+
+    .d20 p{
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 40px;
+
+        pointer-events: none;
+        transition: transform 0.3s;
+        opacity: 0;
+        -webkit-text-stroke: 1px rgb(80, 80, 80);                
+    }
+
+    /*
+    opacity: 1;                       - makes it so you see it when hovering
+    font-size: 80px;                  - changes font size so it matches bigger img behind
+    top: 30%;                         - position stuff
+    left: 50%;                        - position stuff
+    transform: translate(-50%, -50%); - position stuff
+    */
+
+    .d20:hover p {
+      opacity: 1;
+      font-size: 70px;
+      top: 30%;
+      left: 50%;      
+      transform: translate(-50%, -50%);
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+    <div class="banner">
+      <a href="DND-Projekt.html"><img src="D20.png" alt=""></a>
+    </div>
+
+    <!--
+    Div - creates a div thats callled d20
+    img - when clicking the image the function starts
+    p   - a text with id called result also related to the function
+    -->
+
+    <div class="d20">
+
+        <img onclick= "start()" src="d20dice.png" alt="">
+        <p id="result"></p>
+
+    </div>
+
+    <script>
+
+        /*
+        Makes it so the computer has 20 different choices
+        */
+
+        const choice = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+
+        /*
+        a start function called diceroll
+        a variable in this case let called result with nothing in it
+        when clicking on the image a random number between 20 gets chosen kinda stole this from my rps assignment
+        finding in the html the result to be able to write it out when clicking
+        */
+
+        function start(diceroll){
+
+            let result = "";
+
+            const computerChoice = choice[Math.floor(Math.random() *20)];
+
+            document.getElementById("result").textContent = `${computerChoice} ${result}`;
+        }
+
+    </script>
+
+</body>
+</html>
